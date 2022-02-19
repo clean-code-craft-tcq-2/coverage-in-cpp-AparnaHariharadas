@@ -15,15 +15,6 @@ typedef enum {
   INVALID
 } BreachType;
 
-
-/*lowerLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",0));
-lowerLimitMapper.insert(pair<string,int>("HI_ACTIVE_COOLING",0));
-lowerLimitMapper.insert(pair<string,int>("MED_ACTIVE_COOLING",0));
-
-upperLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",30));
-upperLimitMapper.insert(pair<string,int>("HI_ACTIVE_COOLING",45));
-upperLimitMapper.insert(pair<string,int>("MED_ACTIVE_COOLING",40));*/
-
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 

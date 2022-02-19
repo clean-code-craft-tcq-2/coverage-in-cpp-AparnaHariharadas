@@ -29,10 +29,8 @@ BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
   auto iterLower = (lowerLimitMapper.find(coolingType));
   if(iterLower != lowerLimitMapper.end()){
-    //auto iterUpper
     int upperLimit = (upperLimitMapper.find(coolingType))->second;
     int lowerLimit = iterLower->second;
-    //int upperLimit = iterUpper->second;
     return inferBreach(temperatureInC, lowerLimit, upperLimit);
   }
     else
@@ -53,6 +51,8 @@ void checkAndAlert(
     case TO_EMAIL:
       sendToEmail(breachType);
       break;
+   default:
+      printf("No Action ned to be taken");
   }
 }
 
@@ -63,9 +63,7 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  //auto iterTemp = (temperatureBreachMapper.find(breachType));
   const char* tempBreachMessage = (temperatureBreachMapper.find(breachType))->second;
-    //= iterTemp->second;
   printf("To: %s\n", recepient);
   printf("Hi,%s\n", tempBreachMessage);
 }

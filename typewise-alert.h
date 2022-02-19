@@ -6,13 +6,13 @@ typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,
   MED_ACTIVE_COOLING,
-  INVALID
 } CoolingType;
 
 typedef enum {
   NORMAL,
   TOO_LOW,
-  TOO_HIGH
+  TOO_HIGH,
+  INVALID
 } BreachType;
 
 

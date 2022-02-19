@@ -3,7 +3,7 @@
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
  // string detectedBreach = "NORMAL";
-  return (value < lowerLimit ? "TOOLOW" : (value > upperLimit ? "TOO_HIGH": "NORMAL"));
+  return (value < lowerLimit ? TOOLOW : (value > upperLimit ? TOO_HIGH : NORMAL));
   
   /*if(value < lowerLimit) {
     return TOO_LOW;
@@ -13,7 +13,7 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   }
   
   value = */
-  return detectedBreach;
+  //return detectedBreach;
 }
 
 BreachType classifyTemperatureBreach(

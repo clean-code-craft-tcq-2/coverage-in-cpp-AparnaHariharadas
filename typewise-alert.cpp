@@ -12,41 +12,24 @@ map<CoolingType,int> upperLimitMapper {
 {MED_ACTIVE_COOLING,40},
 };
 
+map<BreachType,std::string> temperatureBreachMapper {
+{TOO_LOW,"Temperature is too low"},
+{TOO_HIGH,"Temperature is too high"},
+{NORMAL,"Temperature is normal"},
+};
+
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
- // string detectedBreach = "NORMAL";
   return (value < lowerLimit ? TOO_LOW : (value > upperLimit ? TOO_HIGH : NORMAL));
-  
-  /*if(value < lowerLimit) {
-    return TOO_LOW;
-  }
-  if(value > upperLimit) {
-    return TOO_HIGH;
-  }
-  
-  value = */
-  //return detectedBreach;
+ 
 }
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
-  auto itLower = (lowerLimitMapper.find(coolingType));
-  auto itUpper = (upperLimitMapper.find(coolingType));
-  int lowerLimit = itLower->second;
-  int upperLimit = itUpper->second;
-  /*switch(coolingType) {
-    case PASSIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 35;
-      break;
-    case HI_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 45;
-      break;
-    case MED_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 40;
-      break;
-  }*/
+  auto iterLower = (lowerLimitMapper.find(coolingType));
+  auto iterUpper = (upperLimitMapper.find(coolingType));
+  int lowerLimit = iterLower->second;
+  int upperLimit = iterUpper->second;
   return inferBreach(temperatureInC, lowerLimit, upperLimit);
 }
 
@@ -74,16 +57,8 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  switch(breachType) {
-    case TOO_LOW:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
-      break;
-    case TOO_HIGH:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
-      break;
-    case NORMAL:
-      break;
-  }
+  auto iterTemp = (temperatureBreachMapper.find(coolingType));
+  int tempBreachMessage = iterTemp->second;
+  printf("To: %s\n", recepient);
+  printf("Hi,%s\n" tempBreachMessage);
 }

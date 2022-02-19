@@ -2,20 +2,27 @@
 #include <stdio.h>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-  if(value < lowerLimit) {
+  BreachType detectedBreach = "NORMAL";
+   detectedBreach = value < lowerLimit ? "TOOLOW" : (value > upperLimit ? "TOO_HIGH": "NORMAL");
+  
+  /*if(value < lowerLimit) {
     return TOO_LOW;
   }
   if(value > upperLimit) {
     return TOO_HIGH;
   }
-  return NORMAL;
+  
+  value = */
+  return detectedBreach;
 }
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
-  switch(coolingType) {
+  auto itLower = (lowerLimitMapper.find(coolingType));
+  auto itUpper = (upperLimitMapper.find(coolingType));
+  int lowerLimit = itLower->second;
+  int upperLimit = itUpper->second;
+  /*switch(coolingType) {
     case PASSIVE_COOLING:
       lowerLimit = 0;
       upperLimit = 35;
@@ -28,7 +35,7 @@ BreachType classifyTemperatureBreach(
       lowerLimit = 0;
       upperLimit = 40;
       break;
-  }
+  }*/
   return inferBreach(temperatureInC, lowerLimit, upperLimit);
 }
 

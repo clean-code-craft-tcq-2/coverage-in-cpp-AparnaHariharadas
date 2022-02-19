@@ -12,7 +12,7 @@ map<CoolingType,int> upperLimitMapper {
 {MED_ACTIVE_COOLING,40},
 };
 
-map<BreachType,string> temperatureBreachMapper {
+map<BreachType,std::string> temperatureBreachMapper {
 {TOO_LOW,"Temperature is too low"},
 {TOO_HIGH,"Temperature is too high"},
 {NORMAL,"Temperature is normal"},

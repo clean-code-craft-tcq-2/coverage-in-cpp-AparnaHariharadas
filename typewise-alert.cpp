@@ -1,6 +1,17 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
+map<CoolingType,int> lowerLimitMapper {
+{PASSIVE_COOLING,0},
+{HI_ACTIVE_COOLING,0},
+{MED_ACTIVE_COOLING,0},
+};
+map<CoolingType,int> upperLimitMapper {
+{PASSIVE_COOLING,35},
+{HI_ACTIVE_COOLING,45},
+{MED_ACTIVE_COOLING,40},
+};
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
  // string detectedBreach = "NORMAL";
   return (value < lowerLimit ? TOO_LOW : (value > upperLimit ? TOO_HIGH : NORMAL));

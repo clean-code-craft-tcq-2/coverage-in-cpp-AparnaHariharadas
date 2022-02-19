@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-  BreachType detectedBreach = "NORMAL";
-   detectedBreach = value < lowerLimit ? "TOOLOW" : (value > upperLimit ? "TOO_HIGH": "NORMAL");
+ // string detectedBreach = "NORMAL";
+  return (value < lowerLimit ? "TOOLOW" : (value > upperLimit ? "TOO_HIGH": "NORMAL"));
   
   /*if(value < lowerLimit) {
     return TOO_LOW;

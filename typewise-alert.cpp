@@ -51,8 +51,6 @@ void checkAndAlert(
     case TO_EMAIL:
       sendToEmail(breachType);
       break;
-   default:
-      printf("No Action ned to be taken");
   }
 }
 

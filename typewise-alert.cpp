@@ -61,7 +61,9 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
+  if (breachType != NORMAL){
   const char* tempBreachMessage = (temperatureBreachMapper.find(breachType))->second;
   printf("To: %s\n", recepient);
   printf("Hi,%s\n", tempBreachMessage);
+  }
 }

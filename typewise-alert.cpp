@@ -16,6 +16,7 @@ map<BreachType,std::string> temperatureBreachMapper {
 {TOO_LOW,"Temperature is too low"},
 {TOO_HIGH,"Temperature is too high"},
 {NORMAL,"Temperature is normal"},
+{INVALID,"Invalid Cooling type is given please check"},
 };
 
 

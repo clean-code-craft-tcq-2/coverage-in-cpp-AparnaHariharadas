@@ -1,12 +1,12 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-map<CoolingType,int> lowerLimitMapper {
+map<CoolingType, const int> lowerLimitMapper {
 {PASSIVE_COOLING,0},
 {HI_ACTIVE_COOLING,0},
 {MED_ACTIVE_COOLING,0},
 };
-map<CoolingType,int> upperLimitMapper {
+map<CoolingType, const int> upperLimitMapper {
 {PASSIVE_COOLING,35},
 {HI_ACTIVE_COOLING,45},
 {MED_ACTIVE_COOLING,40},
@@ -29,8 +29,8 @@ BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
   auto iterLower = (lowerLimitMapper.find(coolingType));
   if(iterLower != lowerLimitMapper.end()){
-    int upperLimit = (upperLimitMapper.find(coolingType))->second;
-    int lowerLimit = iterLower->second;
+    const int upperLimit = (upperLimitMapper.find(coolingType))->second;
+   const int lowerLimit = iterLower->second;
     return inferBreach(temperatureInC, lowerLimit, upperLimit);
   }
     else

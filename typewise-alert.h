@@ -11,16 +11,24 @@ typedef enum {
   TOO_LOW,
   TOO_HIGH
 } BreachType;
-map<string,int> lowerLimitMapper;
-map<string,int> upperLimitMapper;
+map<string,int> lowerLimitMapper {
+{"PASSIVE_COOLING",0},
+{"HI_ACTIVE_COOLING",0},
+{"MED_ACTIVE_COOLING",0},
+};
+map<string,int> upperLimitMapper {
+{"PASSIVE_COOLING",35},
+{"HI_ACTIVE_COOLING",45},
+{"MED_ACTIVE_COOLING",40},
+};
 
-lowerLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",0));
+/*lowerLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",0));
 lowerLimitMapper.insert(pair<string,int>("HI_ACTIVE_COOLING",0));
 lowerLimitMapper.insert(pair<string,int>("MED_ACTIVE_COOLING",0));
 
 upperLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",30));
 upperLimitMapper.insert(pair<string,int>("HI_ACTIVE_COOLING",45));
-upperLimitMapper.insert(pair<string,int>("MED_ACTIVE_COOLING",40));
+upperLimitMapper.insert(pair<string,int>("MED_ACTIVE_COOLING",40));*/
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);

@@ -11,6 +11,6 @@ TEST_CASE("infers the breach according to limits") {
   BatteryChar.coolingType = PASSIVE_COOLING;
   //REQUIRE(
   checkAndAlert(TO_CONTROLLER,BatteryChar,30);
-  BatteryChar.coolingType = ACTIVE_COOLING;
+  BatteryChar.coolingType = HI_ACTIVE_COOLING;
   checkAndAlert(TO_EMAIL,BatteryChar,50);
 }

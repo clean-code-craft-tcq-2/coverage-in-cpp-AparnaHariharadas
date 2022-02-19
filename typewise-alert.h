@@ -13,16 +13,7 @@ typedef enum {
   TOO_LOW,
   TOO_HIGH
 } BreachType;
-map<CoolingType,int> lowerLimitMapper {
-{PASSIVE_COOLING,0},
-{HI_ACTIVE_COOLING,0},
-{MED_ACTIVE_COOLING,0},
-};
-map<CoolingType,int> upperLimitMapper {
-{PASSIVE_COOLING,35},
-{HI_ACTIVE_COOLING,45},
-{MED_ACTIVE_COOLING,40},
-};
+
 
 /*lowerLimitMapper.insert(pair<string,int>("PASSIVE_COOLING",0));
 lowerLimitMapper.insert(pair<string,int>("HI_ACTIVE_COOLING",0));

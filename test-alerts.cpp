@@ -41,5 +41,9 @@ TEST_CASE("infers the breach according to limits") {
   BatteryChar.coolingType = (CoolingType)3;
   checkAndAlert(TO_EMAIL,BatteryChar,40);
   
+  sendToEmail(TOO_LOW);
+  sendToEmail(TOO_HIGH);
+  sendToEmail(NORMAL);
+  
   
 }

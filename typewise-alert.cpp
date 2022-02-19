@@ -63,8 +63,9 @@ void sendToController(BreachType breachType) {
 
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
-  auto iterTemp = (temperatureBreachMapper.find(breachType));
-  const char* tempBreachMessage = iterTemp->second;
+  //auto iterTemp = (temperatureBreachMapper.find(breachType));
+  const char* tempBreachMessage = (temperatureBreachMapper.find(breachType))->second;
+    //= iterTemp->second;
   printf("To: %s\n", recepient);
   printf("Hi,%s\n", tempBreachMessage);
 }

@@ -60,5 +60,5 @@ void sendToEmail(BreachType breachType) {
   auto iterTemp = (temperatureBreachMapper.find(breachType));
   std::string tempBreachMessage = iterTemp->second;
   printf("To: %s\n", recepient);
-  printf("Hi,%s\n" tempBreachMessage);
+  printf("Hi,%s\n", tempBreachMessage);
 }

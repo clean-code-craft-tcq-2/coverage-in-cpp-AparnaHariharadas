@@ -27,10 +27,10 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 
 BreachType classifyTemperatureBreach(
     CoolingType coolingType, double temperatureInC) {
-  auto iterLower = (lowerLimitMapper.find(coolingType));
+  auto iterLower = lowerLimitMapper.find(coolingType);
   if(iterLower != lowerLimitMapper.end()){
-    const int upperLimit = (upperLimitMapper.find(coolingType))->second;
-   const int lowerLimit = iterLower->second;
+    const int upperLimit = upperLimitMapper.find(coolingType)->second;
+    const int lowerLimit = iterLower->second;
     return inferBreach(temperatureInC, lowerLimit, upperLimit);
   }
     else

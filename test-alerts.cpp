@@ -35,4 +35,8 @@ TEST_CASE("infers the breach according to limits") {
   checkAndAlert(TO_EMAIL,BatteryChar,20);
   checkAndAlert(TO_EMAIL,BatteryChar,-20);
   
+  sendToEmail(TOO_HIGH);
+  sendToEmail(TOO_LOW);
+  sendToEmail(NORMAL);
+  
 }

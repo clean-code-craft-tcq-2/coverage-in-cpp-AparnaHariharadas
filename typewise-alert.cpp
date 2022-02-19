@@ -12,7 +12,7 @@ map<CoolingType,int> upperLimitMapper {
 {MED_ACTIVE_COOLING,40},
 };
 
-map<BreachType,char *> temperatureBreachMapper {
+map<BreachType,string> temperatureBreachMapper {
 {TOO_LOW,"Temperature is too low"},
 {TOO_HIGH,"Temperature is too high"},
 {NORMAL,"Temperature is normal"},
@@ -58,7 +58,7 @@ void sendToController(BreachType breachType) {
 void sendToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
   auto iterTemp = (temperatureBreachMapper.find(breachType));
-  int tempBreachMessage = iterTemp->second;
+  string tempBreachMessage = iterTemp->second;
   printf("To: %s\n", recepient);
   printf("Hi,%s\n" tempBreachMessage);
 }

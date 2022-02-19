@@ -7,10 +7,15 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(12, 20, 30) == TOO_LOW);
   REQUIRE(inferBreach(35, 20, 30) == TOO_HIGH);
   REQUIRE(inferBreach(25, 20, 30) == NORMAL);
+  
+  REQUIRE(classifyTemperatureBreach(HI_ACTIVE_COOLING,50) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(MED_ACTIVE_COOLING,20) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(PASSIVE_COOLING,20) == NORMAL);
+  
   BatteryCharacter BatteryChar;
   BatteryChar.coolingType = PASSIVE_COOLING;
-  //REQUIRE(
   checkAndAlert(TO_CONTROLLER,BatteryChar,30);
   BatteryChar.coolingType = HI_ACTIVE_COOLING;
   checkAndAlert(TO_EMAIL,BatteryChar,50);
+  checkAndAlert(TO_EMAIL,BatteryChar,20);
 }

@@ -27,16 +27,16 @@ BreachType inferTempBreachTypeUsingLimits(double value, double lowerLimit, doubl
 
 BreachType classifyTemperatureBreachType(
     CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
+  /*int lowerLimit = 0;
   int upperLimit = 0;
   auto iterLower = lowerLimitMapper.find(coolingType);
   if(iterLower != lowerLimitMapper.end()){
     upperLimit = upperLimitMapper.find(coolingType)->second;
-    lowerLimit = iterLower->second;
-    return inferTempBreachTypeUsingLimits(temperatureInC, lowerLimit, upperLimit);
-  }
+    lowerLimit = iterLower->second;*/
+    return inferTempBreachTypeUsingLimits(temperatureInC, lowerLimitMapper.find(coolingType)->second, upperLimitMapper.find(coolingType)->second);
+  /*}
     else
-      return INVALID;
+      return INVALID;*/
 }
 
 void checkBatteryTempForBreachAndAlertTarget(

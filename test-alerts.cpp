@@ -7,7 +7,8 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferTempBreachTypeUsingLimits(12, 20, 30) == TOO_LOW);
   REQUIRE(inferTempBreachTypeUsingLimits(35, 20, 30) == TOO_HIGH);
   REQUIRE(inferTempBreachTypeUsingLimits(25, 20, 30) == NORMAL);
-  
+}
+TEST_CASE("Classify temperature breach type based on cooling type") { 
   REQUIRE(classifyTemperatureBreachType(HI_ACTIVE_COOLING,50) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreachType(HI_ACTIVE_COOLING,-20) == TOO_LOW);
   REQUIRE(classifyTemperatureBreachType(HI_ACTIVE_COOLING,20) == NORMAL);
@@ -19,7 +20,9 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,40) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,10) == NORMAL);
   REQUIRE(classifyTemperatureBreachType((CoolingType)7,10) == INVALID);
-  
+}
+
+TEST_CASE("Check Battery temperature for breach based on cooling type, and alert the respective target") {
   BatteryCharacter BatteryChar;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
   checkBatteryTempForBreachAndAlertTarget((AlertTarget)7,BatteryChar,40);
@@ -37,16 +40,14 @@ TEST_CASE("infers the breach according to limits") {
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,20);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);
-  //BatteryChar.coolingType = NULL;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,20);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);
   BatteryChar.coolingType = (CoolingType)7;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
-  
+}
+TEST_CASE("Send email if temperature breaches limits") {
   sendBreachTypeToEmail(TOO_LOW);
   sendBreachTypeToEmail(TOO_HIGH);
-  sendBreachTypeToEmail(NORMAL);
-  
-  
+  sendBreachTypeToEmail(NORMAL);  
 }

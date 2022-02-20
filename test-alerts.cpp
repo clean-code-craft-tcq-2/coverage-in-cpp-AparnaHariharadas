@@ -30,7 +30,7 @@ TEST_CASE("Check Battery temperature for breach based on cooling type, and alert
   checkBatteryTempForBreachAndAlertTarget(TO_CONTROLLER,BatteryChar,30);
   BatteryChar.coolingType = HI_ACTIVE_COOLING;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,50);
-  checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,20);
+  /*checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,20);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);
   BatteryChar.coolingType = MED_ACTIVE_COOLING;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,45);
@@ -42,10 +42,16 @@ TEST_CASE("Check Battery temperature for breach based on cooling type, and alert
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,20);
-  checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);
+  checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,-20);*/
   BatteryChar.coolingType = (CoolingType)7;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
 }
+TEST_CASE("Send breach type to controller if temperature breaches limits") {
+  sendBreachTypeToController(TOO_LOW);
+  sendBreachTypeToController(TOO_HIGH);
+  sendBreachTypeToController(NORMAL);  
+}
+
 TEST_CASE("Send email if temperature breaches limits") {
   sendBreachTypeToEmail(TOO_LOW);
   sendBreachTypeToEmail(TOO_HIGH);

@@ -27,10 +27,12 @@ BreachType inferTempBreachTypeUsingLimits(double value, double lowerLimit, doubl
 
 BreachType classifyTemperatureBreachType(
     CoolingType coolingType, double temperatureInC) {
+  int lowerLimit = 0;
+  int upperLimit = 0;
   auto iterLower = lowerLimitMapper.find(coolingType);
   if(iterLower != lowerLimitMapper.end()){
-    int upperLimit = upperLimitMapper.find(coolingType)->second;
-    int lowerLimit = iterLower->second;
+    upperLimit = upperLimitMapper.find(coolingType)->second;
+    lowerLimit = iterLower->second;
     return inferTempBreachTypeUsingLimits(temperatureInC, lowerLimit, upperLimit);
   }
     else

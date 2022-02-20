@@ -17,7 +17,7 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,10) == NORMAL);
   REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,-5) == TOO_LOW);
   REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,40) == TOO_HIGH);
-  REQUIRE(classifyTemperatureBreachaType(PASSIVE_COOLING,10) == NORMAL);
+  REQUIRE(classifyTemperatureBreachType(PASSIVE_COOLING,10) == NORMAL);
   REQUIRE(classifyTemperatureBreachType((CoolingType)7,10) == INVALID);
   
   BatteryCharacter BatteryChar;

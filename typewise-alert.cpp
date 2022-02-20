@@ -20,46 +20,46 @@ map<BreachType,const char*> temperatureBreachMapper {
 };
 
 
-BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
+BreachType inferTempBreachTypeUsingLimits(double value, double lowerLimit, double upperLimit) {
   return (value < lowerLimit ? TOO_LOW : (value > upperLimit ? TOO_HIGH : NORMAL));
  
 }
 
-BreachType classifyTemperatureBreach(
+BreachType classifyTemperatureBreachType(
     CoolingType coolingType, double temperatureInC) {
   auto iterLower = lowerLimitMapper.find(coolingType);
   if(iterLower != lowerLimitMapper.end()){
     const int upperLimit = upperLimitMapper.find(coolingType)->second;
     const int lowerLimit = iterLower->second;
-    return inferBreach(temperatureInC, lowerLimit, upperLimit);
+    return inferTempBreachTypeUsingLimits(temperatureInC, lowerLimit, upperLimit);
   }
     else
       return INVALID;
 }
 
-void checkAndAlert(
+void checkBatteryTempForBreachAndAlertTarget(
     AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
-  BreachType breachType = classifyTemperatureBreach(
+  BreachType breachType = classifyTemperatureBreachType(
     batteryChar.coolingType, temperatureInC
   );
 
   switch(alertTarget) {
     case TO_CONTROLLER:
-      sendToController(breachType);
+      sendBreachTypeToController(breachType);
       break;
     case TO_EMAIL:
-      sendToEmail(breachType);
+      sendBreachTypeToEmail(breachType);
       break;
   }
 }
 
-void sendToController(BreachType breachType) {
+void sendBreachTypeToController(BreachType breachType) {
   const unsigned short header = 0xfeed;
   printf("%x : %x\n", header, breachType);
 }
 
-void sendToEmail(BreachType breachType) {
+void sendBreachTypeToEmail(BreachType breachType) {
   const char* recepient = "a.b@c.com";
   if (breachType != NORMAL){
   const char* tempBreachMessage = (temperatureBreachMapper.find(breachType))->second;

@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
-#include <map>
-using std::map;
+
 typedef enum {
   PASSIVE_COOLING,
   HI_ACTIVE_COOLING,

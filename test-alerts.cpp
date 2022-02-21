@@ -8,6 +8,7 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferTempBreachTypeUsingLimits(35, 20, 30) == TOO_HIGH);
   REQUIRE(inferTempBreachTypeUsingLimits(25, 20, 30) == NORMAL);
 }
+
 TEST_CASE("Classify temperature breach type based on cooling type") { 
   REQUIRE(classifyTemperatureBreachType(HI_ACTIVE_COOLING,50) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreachType(HI_ACTIVE_COOLING,-20) == TOO_LOW);

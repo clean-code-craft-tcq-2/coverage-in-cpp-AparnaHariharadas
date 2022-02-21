@@ -25,8 +25,8 @@ map<BreachType,const char*> temperatureBreachMapper {
 {NORMAL,"Temperature is normal"},
 {INVALID,"Invalid Cooling type is given please check"},
 };
- using pfunc = void (*)(BreachType);
-map<AlertTarget, pfun> alertTargetFuncFinder {
+using pfunc = void (*)(BreachType);
+map<AlertTarget, pfunc> alertTargetFuncFinder {
 {TO_CONTROLLER, sendBreachTypeToController},
 {TO_EMAIL, sendBreachTypeToEmail}
 };
@@ -38,11 +38,11 @@ BreachType inferTempBreachTypeUsingLimits(double value, double lowerLimit, doubl
 
 BreachType classifyTemperatureBreachType(
     CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
+  //int lowerLimit = 0;
   //int upperLimit = 0;
   //auto iterLower = lowerLimitMapper.find(coolingType);
-  if (temperatureUpperAndLowerLimitsMapper.find(coolingType) != temperatureUpperAndLowerLimitsMapper.end())
-  if(iterLower != lowerLimitMapper.end()){
+  if (temperatureUpperAndLowerLimitsMapper.find(coolingType) != temperatureUpperAndLowerLimitsMapper.end()){
+  //if(iterLower != lowerLimitMapper.end()){
     //lowerLimit = iterLower->second;
     return inferTempBreachTypeUsingLimits(temperatureInC,temperatureUpperAndLowerLimitsMapper[coolingType].at(0), temperatureUpperAndLowerLimitsMapper[coolingType].at(1));
     //return inferTempBreachTypeUsingLimits(temperatureInC, temperatureUpperAndLowerLimitsMapper[coolingType].at[0], upperLimitMapper.find(coolingType)->second);

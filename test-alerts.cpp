@@ -25,7 +25,7 @@ TEST_CASE("Classify temperature breach type based on cooling type") {
 TEST_CASE("Check Battery temperature for breach based on cooling type, and alert the respective target") {
   BatteryCharacter BatteryChar;
   checkBatteryTempForBreachAndAlertTarget(TO_EMAIL,BatteryChar,40);
-  checkBatteryTempForBreachAndAlertTarget((AlertTarget)7,BatteryChar,40);
+  //checkBatteryTempForBreachAndAlertTarget((AlertTarget)7,BatteryChar,40);
   BatteryChar.coolingType = PASSIVE_COOLING;
   checkBatteryTempForBreachAndAlertTarget(TO_CONTROLLER,BatteryChar,30);
   BatteryChar.coolingType = HI_ACTIVE_COOLING;

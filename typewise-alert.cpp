@@ -11,7 +11,6 @@ BreachType classifyTemperatureBreachType(
     CoolingType coolingType, double temperatureInC) {
   if (temperatureUpperAndLowerLimitsMapper.find(coolingType) != temperatureUpperAndLowerLimitsMapper.end())
     return inferTempBreachTypeUsingLimits(temperatureInC,temperatureUpperAndLowerLimitsMapper[coolingType].at(0), temperatureUpperAndLowerLimitsMapper[coolingType].at(1));
-  }
     else
       return INVALID;
 }
